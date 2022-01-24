@@ -36,15 +36,18 @@ export const Navbar = styled.nav`
 
     // Style any icons inside the container
     & .icon {
+        transition: all 0.25s ease-in-out;
         background-color: rgba(0,162,232);
         color: white;
         border-radius: 50%; // make the icon look embedded in a blue circle
         padding: .5rem;
-        border: 1px solid white;
+        //border: 1px solid white;
 
         &:hover {
-            border: 1px solid black;
+            transition: all 0.25s ease-in-out;
+            //border: 1px solid black;
             cursor: pointer;
+            border-radius: 25%; 
         }
     }
 `;

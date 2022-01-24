@@ -70,14 +70,16 @@ export const Navbar = styled.nav`
     }
 
     & .nav-button {
+        transition: all 0.1s ease-in-out;
         border: 0;
         color: white;
         background-color: transparent;
         padding-bottom: .1rem;
         font-size: large;
+        border-bottom: 1px solid transparent;
 
         &:hover {
-            transition: .1s;
+            transition: all 0.1s ease-in-out;
             border-bottom: 1px solid white;
             margin-bottom: -1px;
             cursor: pointer;

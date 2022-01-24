@@ -21,9 +21,9 @@ const Home = () => {
                         </span>
                     </Nav>
                     <SideNav>
-                        <IoMdAdd size={64} className="icon" />
-                        <AiFillEdit size={64} className="icon" />
-                        <MdDeleteForever size={64} className="icon" />
+                        <IoMdAdd size={32} className="icon" />
+                        <AiFillEdit size={32} className="icon" />
+                        <MdDeleteForever size={32} className="icon" />
                     </SideNav>
                     <CarouselContainer>
                         <h2 style={{ fontSize: '2rem', color: 'black', margin: '2rem 0 2rem 3.5rem' }}>
