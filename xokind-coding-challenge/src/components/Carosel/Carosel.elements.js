@@ -37,6 +37,7 @@ export const CardImage = styled.img`
 `;
 
 export const Card = styled.div`
+  transition: all 100ms ease-in !important;  
   z-index: 999;
   display: flex;
   flex-direction: column;
@@ -44,15 +45,18 @@ export const Card = styled.div`
   height: 280px;
   width: 250px;
   background-color: white;
-  box-shadow: -2px 9px 15px -2px rgba(0,0,0,0.75);
--webkit-box-shadow: -2px 9px 15px -2px rgba(0,0,0,0.75);
--moz-box-shadow: -2px 9px 15px -2px rgba(0,0,0,0.75);
+  box-shadow: -2px 0px 10px -2px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -2px 0px 10px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: -2px 0px 10px -2px rgba(0,0,0,0.75);
   transition: transform 1s;
   overflow: visible;
   &:hover {
-    transition: all 200ms ease-in;  
+    transition: all 50ms ease-in;  
     height: 320px;
     width: 290px;  
+    box-shadow: -2px 9px 15px -2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -2px 9px 15px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 9px 15px -2px rgba(0,0,0,0.75);
     ${CardButton} {
       display: none;
     }
