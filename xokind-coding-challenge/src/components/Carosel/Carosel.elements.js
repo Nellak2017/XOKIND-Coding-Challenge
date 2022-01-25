@@ -38,7 +38,6 @@ export const CardImage = styled.img`
 
 export const Card = styled.div`
   transition: all 100ms ease-in !important;  
-  z-index: 999;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -49,7 +48,7 @@ export const Card = styled.div`
   -webkit-box-shadow: -2px 0px 10px -2px rgba(0,0,0,0.75);
   -moz-box-shadow: -2px 0px 10px -2px rgba(0,0,0,0.75);
   transition: transform 1s;
-  overflow: visible;
+  overflow: hidden;
   &:hover {
     transition: all 50ms ease-in;  
     height: 320px;
@@ -174,12 +173,12 @@ export const StyledSlide = styled(Slide)`
 
 export const StyledSlider = styled(Slider)`
   overflow: unset;
-  width: 100%;
+  
 `;
 
 export const CarouselContainer = styled.div`
   overflow: hidden;
   height: 100%;
-  width: 100%;
-  padding-left: 150px;
+  width: calc(100% - 150px);
+  margin-left: 150px;
 `;

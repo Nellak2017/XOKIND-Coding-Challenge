@@ -3,9 +3,7 @@ import AnonymousLogin from '../components/Anonymous/AnonymousLogin'
 
 const Login = () => {
     return (
-        <>
            <AnonymousLogin />
-        </>
     );
 }
 

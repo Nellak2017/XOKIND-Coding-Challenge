@@ -1,4 +1,5 @@
 import React from 'react';
+import app, { auth } from "../firebase.js"; // Used to Talk to Firebase API
 import Nav from '../components/Nav/Nav';
 import SideNav from '../components/SideNav/SideNav';
 import Carosel from '../components/Carosel/Carosel';
@@ -7,8 +8,10 @@ import { IconContext } from 'react-icons/lib';
 import { IoMdAdd } from 'react-icons/io'; // Add Icon
 import { AiFillEdit } from 'react-icons/ai'; // Edit Icon
 import { MdDeleteForever } from 'react-icons/md'; // Delete Icon
+import { useHistory } from 'react-router-dom';
 
 const Home = () => {
+    const RouteHistory = useHistory();
     return (
         <>
             <IconContext.Provider value={{ color: '#fff' }}>
@@ -17,7 +20,12 @@ const Home = () => {
                         <h1>Places</h1>
                         <span className="button-group">
                             <button className="nav-button">Sort by: Rating (placeholder)</button>
-                            <button className="nav-button">Sign Out</button>
+                            <button
+                                className="nav-button"
+                                onClick={() => {RouteHistory.push("/login"); auth.signOut();}}
+                            >
+                                Sign Out
+                            </button>
                         </span>
                     </Nav>
                     <SideNav>
