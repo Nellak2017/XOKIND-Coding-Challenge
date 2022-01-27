@@ -1,5 +1,6 @@
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import { getFirestore, collection, doc, getDocs } from "firebase/firestore";
 
 const app = firebase.initializeApp({
     apiKey: "AIzaSyA3412CyqYP3XiRFGH1HWgrc3zV0AhfGXI",
@@ -11,4 +12,7 @@ const app = firebase.initializeApp({
 })
 
 export const auth = app.auth();
+export const firestore = getFirestore();
+export const colRef = collection(firestore, 'Places');
+
 export default app;
