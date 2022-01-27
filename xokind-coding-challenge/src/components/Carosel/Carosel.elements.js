@@ -2,6 +2,39 @@ import styled from "styled-components";
 import { Slide, Slider, ButtonBack, ButtonNext } from "pure-react-carousel";
 import { motion } from "framer-motion";
 
+// Span used to hold the ratings and $$$, along with the name and the X
+export const SpecialSpan = styled.span`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 2rem 0 0;
+  margin-right: 2rem;
+  height: 1rem;
+  align-items: center;
+`;
+
+// Delete button used in the carousel
+// Optional idea, make the X button appear in the top right corner of the Card as expected
+export const DeleteButton = styled.button`
+  transition: all 0.25s ease-in-out;
+  border: 0;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  padding: .5rem;
+
+  &:hover {
+    transition: all 0.25s ease-in-out;
+    border-radius: 25%;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: x-large;
+    padding-top: .25rem;
+  }
+`;
+
 export const CardButton = styled(motion.div)`
   width: 100%;
   height: 15px;
@@ -37,6 +70,9 @@ export const CardImage = styled.img`
 `;
 
 export const Card = styled.div`
+  &:focus-visible{
+    outline: none!important;
+  }
   transition: all 100ms ease-in !important;  
   display: flex;
   flex-direction: column;
@@ -86,6 +122,15 @@ export const CardText = styled.div`
       font-size: 1rem;
       font-weight: 100;
   }
+
+  & input {
+    height: 1rem;
+    width: 10rem;
+  }
+
+  &:focus-visible{
+    outline: none!important;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -102,6 +147,9 @@ export const ButtonContainer = styled.div`
 `;
 
 export const SliderContainer = styled.div`
+  &:focus-visible{
+    outline: none!important;
+  }
   position: relative;
   left: 60px;
   height: 10rem;
@@ -159,6 +207,12 @@ export const NextButton = styled(ButtonNext)`
 `;
 
 export const StyledSlide = styled(Slide)`
+  &:focus-visible{
+    outline: none!important;
+  }
+  &:focus{
+    outline: none!important;
+  }
   transition: all 700ms linear;
   &.hidden {
     transition-delay: ${({ index }) => (index % 3) * 150}ms;
@@ -173,10 +227,15 @@ export const StyledSlide = styled(Slide)`
 
 export const StyledSlider = styled(Slider)`
   overflow: unset;
-  
+  & :focus-visible{
+    outline: none!important;
+  }
 `;
 
 export const CarouselContainer = styled.div`
+  & :focus-visible{
+    outline: none!important;
+  }
   overflow: hidden;
   height: 100%;
   width: calc(100% - 150px);
