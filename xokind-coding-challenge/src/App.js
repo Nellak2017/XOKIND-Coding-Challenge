@@ -8,14 +8,13 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 /* 
 TODO:
-X Set up Anonymous Authentication with Firebase
-Set up Firestore with Firebase
-Store place details in Firestore
-Enable CUD operations for the Add, Edit, and Delete buttons (Affect the carosel elements when pressed, calls for a context or redux)
-Enable Private routes that can only be accessed when logged in
-Make the carosel Mobile Responsive, and possibly move the buttons
+Make the carosel Mobile Responsive
+Possibly move the X button to top right of each card
 Figure out how to sort data by price or by ratings and implement
 Ensure all buttons are functioning as intended. Example: Sign Out signs out of Anonymous Account
+Get Rid of onBlur, it is annoying
+Add the 3 dots to the bottom of the carosel
+Clean up Code and make it more well documented and pretty
 */
 
 function App() {
