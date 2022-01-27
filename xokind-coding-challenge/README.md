@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# Getting Started with XOKIND-Coding-Challenge
+This project was made as a test of my abilities.
+As such, I have completed the challenge to the best of my abilities in the time given.  
+It is meant to display a list of Places from a _Firestore_ backend, after being authenticated anonymously with _Firebase Authentication_. 
+Each place is loaded inside of a Carosel Card element that displays it's picture, name, rating, and price. 
+You may update the Places as you wish and it will automatically be reflected in the _Firestore_.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to Run the App Locally
 
-## Available Scripts
+1. In your code editor of choice, in an empty directory, run the following git command in your terminal:
+```git
+git init
+git clone https://github.com/Nellak2017/XOKIND-Coding-Challenge.git
+```
+2. With the github project cloned, you will need to install the dependencies of XOKIND-Coding-Challenge, to do so do the following: 
+```bash
+npm install 
+```
+3. When the proper dependencies are installed, run the following command:
+```bash
+npm start
+```
+4. It will then run the development version in your _localhost:3000/_ by default. 
 
-In the project directory, you can run:
+## How to use the App
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. When you Run the App Locally, you will be able to login anonymously. Click the sign in anonymously button to sign in. 
+2. When signed in, you will then see a carousel of places. You may use the carousel, add, edit, delete, or sign out of the application. 
