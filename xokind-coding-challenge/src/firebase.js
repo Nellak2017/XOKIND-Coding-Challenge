@@ -2,6 +2,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import { getFirestore, collection, doc, getDocs } from "firebase/firestore";
 
+// I am manually putting in the api keys here because I couldn't get the environment variables working
 const app = firebase.initializeApp({
     apiKey: "AIzaSyA3412CyqYP3XiRFGH1HWgrc3zV0AhfGXI",
     authDomain: "xokind-coding-challenge.firebaseapp.com",

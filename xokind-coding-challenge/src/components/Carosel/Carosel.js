@@ -25,6 +25,7 @@ const Carosel = ({ data, setData, isEditing, setIsEditing, isDeleting, setIsDele
 
     const [nameRef, setNameRef] = useState([]); // This is because the input likes to not focus, just like me
     const [ratingRef, setRatingRef] = useState([]);
+    const [priceRef, setPriceRef] = useState([]);
 
     // add or remove refs for the input elements
     useEffect(() => {
@@ -37,6 +38,11 @@ const Carosel = ({ data, setData, isEditing, setIsEditing, isDeleting, setIsDele
             Array(data.length)
                 .fill()
                 .map((_, i) => ratingRefs[i] || React.createRef()),
+        );
+        setPriceRef((priceRefs) =>
+            Array(data.length)
+                .fill()
+                .map((_, i) => priceRefs[i] || React.createRef()),
         );
     }, [data]);
 
@@ -98,7 +104,7 @@ const Carosel = ({ data, setData, isEditing, setIsEditing, isDeleting, setIsDele
                                                 }}
                                                 onBlur={() => {
                                                     const docRef = doc(firestore, 'Places', item.id);
-                                                    setIsEditing(!isEditing);
+                                                    //setIsEditing(!isEditing);
                                                     updateDoc(docRef, { name: data[index].name })
                                                         .then()
                                                         .catch((err) => alert(err))
@@ -108,16 +114,16 @@ const Carosel = ({ data, setData, isEditing, setIsEditing, isDeleting, setIsDele
                                             <h2>{item.name}</h2>
                                         }
                                         {
-                                            isDeleting ? 
-                                            <DeleteButton onClick={() => {
-                                                const docRef = doc(firestore, 'Places', item.id);
-                                                setIsDeleting(false);
-                                                deleteDoc(docRef)
-                                                    .then()
-                                                    .catch((err) => alert(err))
+                                            isDeleting ?
+                                                <DeleteButton onClick={() => {
+                                                    const docRef = doc(firestore, 'Places', item.id);
+                                                    setIsDeleting(false);
+                                                    deleteDoc(docRef)
+                                                        .then()
+                                                        .catch((err) => alert(err))
 
-                                            }}>x</DeleteButton>
-                                            :""
+                                                }}>x</DeleteButton>
+                                                : ""
                                         }
                                     </SpecialSpan>
                                     <SpecialSpan>
@@ -167,7 +173,7 @@ const Carosel = ({ data, setData, isEditing, setIsEditing, isDeleting, setIsDele
                                                 }
                                                 onBlur={() => {
                                                     const docRef = doc(firestore, 'Places', item.id);
-                                                    setIsEditing(!isEditing);
+                                                    //setIsEditing(!isEditing);
                                                     updateDoc(docRef, { rating: data[index].rating })
                                                         .then()
                                                         .catch((err) => alert(err))
@@ -175,7 +181,41 @@ const Carosel = ({ data, setData, isEditing, setIsEditing, isDeleting, setIsDele
                                             />
                                             :
                                             <h3>{[...Array(Number(item.rating))].map((e, i) => <span key={i}>⭐</span>)}</h3>}
-                                        <h3>{item.price}</h3>
+                                        {isEditing ?
+                                            <select
+                                                name="price"
+                                                placeholder={item.price}
+                                                defaultValue={data[index].price}
+                                                ref={priceRef[index]}
+                                                onClick={() => priceRef[index].current.focus()}
+                                                onChange={e => {
+                                                    
+                                                    setData(old => old.map((item, i) => {
+                                                        // see also: https://redux.js.org/usage/structuring-reducers/immutable-update-patterns
+                                                        // The point of this is to immutably update the data
+                                                        if (i !== index) {
+                                                            // if it isn't our item, don't change
+                                                            return item;
+                                                        }
+                                                        // otherwise, return the updated value
+                                                        return {
+                                                            ...item,
+                                                            price: e.target.value
+                                                        }
+
+                                                    })
+                                                    )
+                                                }}
+                                            >
+                                                <option value="$">$</option>
+                                                <option value="$$">$$</option>
+                                                <option value="$$$">$$$</option>
+                                                <option value="$$$$">$$$$</option>
+                                                <option value="$$$$$">$$$$$</option>
+                                            </select>
+                                            :
+                                            <h3>{item.price}</h3>
+                                        }
                                     </SpecialSpan>
                                 </CardText>
                                 <CardButton />

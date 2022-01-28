@@ -15,11 +15,7 @@ export const AuthProvider = ({ children }) => {
     // Context API allows all of App to have access to variables
     // It is similar to redux, but has the drawback of less debugability.
     return ( 
-        <AuthContext.Provider
-            value={{
-                currentUser
-            }}
-        >
+        <AuthContext.Provider value={{currentUser}}>
             {children}
         </AuthContext.Provider>
      );
