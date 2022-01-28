@@ -8,7 +8,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 /* 
 TODO:
-Add the Change $$$ functionality ==> https://formik.org/docs/overview 
+~~ (Completed in a Hacky way) Add the Change $$$ functionality ==> https://formik.org/docs/overview 
 Clean up Code and make it more well documented and pretty
 Make the carosel Mobile Responsive
 Ensure all buttons are functioning as intended. Example: Sign Out signs out of Anonymous Account

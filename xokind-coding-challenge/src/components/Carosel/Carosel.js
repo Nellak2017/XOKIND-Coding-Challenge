@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
-import app, { auth, colRef, firestore } from "../../firebase"; // Used to Talk to Firebase API
-import { collection, getDocs, updateDoc, doc, deleteDoc } from "firebase/firestore"; // Used to talk to Firestore API
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+import React, { useEffect, useState } from 'react';
+import { firestore } from "../../firebase"; // Used to Talk to Firebase API
+import { updateDoc, doc, deleteDoc } from "firebase/firestore"; // Used to talk to Firestore API
+import { CarouselProvider } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import FirebaseLogo from "../../images/FirebaseLogo.png"; // this is used for example only
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import {
     SpecialSpan,
@@ -182,37 +181,55 @@ const Carosel = ({ data, setData, isEditing, setIsEditing, isDeleting, setIsDele
                                             :
                                             <h3>{[...Array(Number(item.rating))].map((e, i) => <span key={i}>⭐</span>)}</h3>}
                                         {isEditing ?
-                                            <select
+                                            <input
+                                                style={{ width: '2rem' }}
+                                                options={["$","$$","$$$","$$$$","$$$$$"]}
+                                                type="text"
                                                 name="price"
+                                                ref={priceRef[index]}
                                                 placeholder={item.price}
                                                 defaultValue={data[index].price}
-                                                ref={priceRef[index]}
                                                 onClick={() => priceRef[index].current.focus()}
                                                 onChange={e => {
-                                                    
-                                                    setData(old => old.map((item, i) => {
-                                                        // see also: https://redux.js.org/usage/structuring-reducers/immutable-update-patterns
-                                                        // The point of this is to immutably update the data
-                                                        if (i !== index) {
-                                                            // if it isn't our item, don't change
-                                                            return item;
-                                                        }
-                                                        // otherwise, return the updated value
-                                                        return {
-                                                            ...item,
-                                                            price: e.target.value
-                                                        }
-
-                                                    })
-                                                    )
+                                                    e.target.value === "$" || e.target.value === "$$" || e.target.value === "$$$" || e.target.value === "$$$$" || e.target.value === "$$$$$"
+                                                        ?
+                                                        setData(old => old.map((item, i) => {
+                                                            // see also: https://redux.js.org/usage/structuring-reducers/immutable-update-patterns
+                                                            // The point of this is to immutably update the data
+                                                            if (i !== index) {
+                                                                // if it isn't our item, don't change
+                                                                return item;
+                                                            }
+                                                            // otherwise, return the updated value
+                                                            return {
+                                                                ...item,
+                                                                price: e.target.value
+                                                            }
+                                                        }))
+                                                        :
+                                                        setData(old => old.map((item, i) => {
+                                                            // see also: https://redux.js.org/usage/structuring-reducers/immutable-update-patterns
+                                                            // The point of this is to immutably update the data
+                                                            if (i !== index) {
+                                                                // if it isn't our item, don't change
+                                                                return item;
+                                                            }
+                                                            // otherwise, return the updated value
+                                                            return {
+                                                                ...item,
+                                                                price: "$$"
+                                                            }
+                                                        })
+                                                        )
                                                 }}
-                                            >
-                                                <option value="$">$</option>
-                                                <option value="$$">$$</option>
-                                                <option value="$$$">$$$</option>
-                                                <option value="$$$$">$$$$</option>
-                                                <option value="$$$$$">$$$$$</option>
-                                            </select>
+                                                onBlur={() => {
+                                                    const docRef = doc(firestore, 'Places', item.id);
+                                                    //setIsEditing(!isEditing);
+                                                    updateDoc(docRef, { price: data[index].price })
+                                                        .then()
+                                                        .catch((err) => alert(err))
+                                                }}
+                                            />  
                                             :
                                             <h3>{item.price}</h3>
                                         }
